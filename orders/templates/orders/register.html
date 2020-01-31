@@ -1,0 +1,62 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    register
+{% endblock %}
+
+{% block main %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <br><br><br>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" id = "user">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" id = "password">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="firstname" placeholder="first name" type="text" id = "first">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="lastname" placeholder="last name" type="text" id = "last">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email adress" type="text" id = "email">
+        </div>
+        <button class="btn btn-primary" type="submit" id = "registerbutton">Register</button>
+    </form>
+
+
+    <script>
+    document.querySelector('form').onsubmit = function()
+    {
+        if (!document.querySelector('#user').value)
+        {
+            alert('username is empty');
+            return false;
+        }
+        else if (!document.querySelector('#password').value)
+        {
+            alert('password is empty');
+            return false;
+        }
+        else if (!document.querySelector('#first').value)
+        {
+            alert('first name is empty');
+            return false;
+        }
+        else if (!document.querySelector('#last').value)
+        {
+            alert('last name is empty');
+            return false;
+        }
+        else if (!document.querySelector('#email').value)
+        {
+            alert('email is empty');
+            return false;
+        }
+    }
+    </script>
+
+{% endblock %}
+

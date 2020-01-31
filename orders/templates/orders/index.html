@@ -1,0 +1,127 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    pizza
+{% endblock %}
+
+{% block main %}
+<table class="table table-bordered table-dark" id = "t1">
+    <thead>
+      <tr>
+        <th scope="col" class = "tablelabel">Regular pizza</th>
+        <th scope="col" class = "tablelabel">small</th>
+        <th scope="col" class = "tablelabel">large</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pizza in Regular_pizza %}
+      <tr>
+        <th scope="row">{{ pizza.name }}</th>
+        <td>{{ pizza.small }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{pizza.id}}-Regular Pizza-s" /><button type="submit" id = "biso">+</button></form></td>
+        <td>{{ pizza.large }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{pizza.id}}-Regular Pizza-l" /><button type="submit" id = "biso">+</button></form></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+<table class="table table-bordered table-dark" id = "t2">
+    <thead>
+        <tr>
+          <th scope="col" class = "tablelabel">Sicilian pizza</th>
+          <th scope="col" class = "tablelabel">small</th>
+          <th scope="col" class = "tablelabel">large</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pizza in Sicilian_pizza %}
+        <tr>
+          <th scope="row">{{ pizza.name }}</th>
+          <td>{{ pizza.small }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{pizza.id}}-Sicilian pizza-s" /><button type="submit" id = "biso">+</button></form></td>
+          <td>{{ pizza.large }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{pizza.id}}-Sicilian pizza-l" /><button type="submit" id = "biso">+</button></form></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+<table class="table table-bordered table-dark" id = "t3">
+      <thead>
+          <tr>
+            <th scope="3 col" class = "tablelabel">Topping</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in Topping %}
+          <tr>
+            <th scope="row">{{ item.name }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{item.id}}-Topping-r" /><button type="submit" id = "biso">+</button></form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  <table class="table table-bordered table-dark" id = "t4">
+      <thead>
+          <tr>
+            <th scope="col" class = "tablelabel">Sub</th>
+            <th scope="col" class = "tablelabel">small</th>
+            <th scope="col" class = "tablelabel">large</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in Sub %}
+          <tr>
+            <th scope="row">{{ item.name }}</th>
+            <td>{{ item.small }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{item.id}}-sub-s" /><button type="submit" id = "biso">+</button></form></td>
+            <td>{{ item.large }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{item.id}}-sub-l" /><button type="submit" id = "biso">+</button></form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  <table class="table table-bordered table-dark" id = "t5">
+      <thead>
+          <tr>
+            <th scope="col" class = "tablelabel">Pasta</th>
+            <th scope="col" class = "tablelabel">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in Pasta %}
+          <tr>
+            <th scope="row">{{ item.name }}</th>
+            <td>{{ item.price }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{item.id}}-Pasta-r" /><button type="submit" id = "biso">+</button></form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  <table class="table table-bordered table-dark" id = "t6">
+      <thead>
+          <tr>
+            <th scope="col" class = "tablelabel">Salad</th>
+            <th scope="col" class = "tablelabel">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in Salad %}
+          <tr>
+            <th scope="row">{{ item.name }}</th>
+            <td>{{ item.price }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{item.id}}-Salad-r" /><button type="submit" id = "biso">+</button></form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  <table class="table table-bordered table-dark" id = "t7">
+      <thead>
+          <tr>
+            <th scope="col" class = "tablelabel">Dinner_platter</th>
+            <th scope="col" class = "tablelabel">small</th>
+            <th scope="col" class = "tablelabel">large</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for plate in Dinner_platter %}
+          <tr>
+            <th scope="row">{{ plate.name }}</th>
+            <td>{{ plate.small }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{plate.id}}-Dinner_platter-s" /><button type="submit" id = "biso">+</button></form></td>
+            <td>{{ plate.large }} <form action = "{% url 'index' %}"  method = "post" >{% csrf_token %}<input type="hidden" name="userPizza" value="{{plate.id}}-Dinner_platter-l" /><button type="submit" id = "biso">+</button></form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  
+{% endblock %}

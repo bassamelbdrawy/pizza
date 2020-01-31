@@ -1,0 +1,33 @@
+{% extends "orders/layout.html" %}
+
+{% block title %}
+    pizza
+{% endblock %}
+
+{% block main %}
+<table class="table table-bordered table-dark" id = "t8">
+    <thead>
+      <tr>
+        <th scope="col" class = "tablelabel">Group Name</th>
+        <th scope="col" class = "tablelabel">Item Name</th>
+        <th scope="col" class = "tablelabel">Size</th>
+        <th scope="col" class = "tablelabel">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in my_order %}
+      <tr>
+        <th scope="row">{{ item.groupname }}</th>
+        <td>{{ item.itemname }}</td>
+        <td>{{ item.size }}</td>
+        <td>{{ item.itemprice }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <td>TOTAL PRICE</td>
+      <td>{{ summ }}</td>
+      {% if summ > 0%}
+      <td><form action = "{% url 'myorder' %}"  method = "post" >{% csrf_token %}<button class="btn btn-primary" type="submit" id="orderbutton">Place order</button></form></td>
+      {% endif %}
+</table>
+{% endblock %}
